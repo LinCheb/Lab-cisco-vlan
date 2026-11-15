@@ -1,0 +1,59 @@
+! ===== SW0 - Switch 0 =====
+! Configuration appliquee (lab Packet Tracer - mots de passe de TP uniquement)
+enable
+configure terminal
+hostname SW0
+banner motd $ Acces interdit sauf aux administrateurs $
+ip domain-name form-it.loc
+enable secret 123456
+username admin secret 123456
+!
+line console 0
+ login local
+ exit
+!
+ip ssh version 2
+crypto key generate rsa
+! (taille de cle : 2048)
+line vty 0 15
+ login local
+ transport input ssh
+ exit
+!
+vlan 10
+ name CLIENT
+vlan 20
+ name DIRECTEUR
+vlan 30
+ name MONITORING
+vlan 40
+ name SERVEUR
+vlan 50
+ name GESTION_IT
+!
+interface range fa0/1 - 4
+ switchport mode access
+ switchport access vlan 10
+interface range fa0/5 - 9
+ switchport mode access
+ switchport access vlan 20
+interface range fa0/10 - 13
+ switchport mode access
+ switchport access vlan 30
+interface range fa0/14 - 20
+ switchport mode access
+ switchport access vlan 40
+interface range fa0/21 - 24
+ switchport mode access
+ switchport access vlan 50
+!
+interface gigabitethernet 0/1
+ switchport mode trunk
+ no shutdown
+!
+interface vlan 40
+ ip address 192.168.40.29 255.255.255.224
+ no shutdown
+ exit
+end
+copy running-config startup-config

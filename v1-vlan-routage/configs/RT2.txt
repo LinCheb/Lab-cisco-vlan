@@ -1,0 +1,22 @@
+! ===== RT2 - Routeur 2 =====
+! Configuration appliquee (lab Packet Tracer)
+enable
+configure terminal
+!
+interface gigabitethernet 0/0
+ ip address 92.100.0.2 255.255.255.252
+ no shutdown
+ exit
+interface gigabitethernet 0/1
+ ip address 8.255.255.254 255.0.0.0
+ no shutdown
+ exit
+!
+! --- Routes de retour vers les VLAN derriere RT1 ---
+ip route 192.168.10.0 255.255.255.0 92.100.0.1
+ip route 192.168.20.0 255.255.255.128 92.100.0.1
+ip route 192.168.30.0 255.255.255.192 92.100.0.1
+ip route 192.168.40.0 255.255.255.224 92.100.0.1
+ip route 192.168.50.0 255.255.255.240 92.100.0.1
+end
+copy running-config startup-config

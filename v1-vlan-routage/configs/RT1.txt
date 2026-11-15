@@ -1,0 +1,57 @@
+! ===== RT1 - Routeur 1 =====
+! Configuration appliquee (lab Packet Tracer - mots de passe de TP uniquement)
+enable
+configure terminal
+hostname RT1
+banner motd $ Acces interdit sauf aux administrateurs $
+ip domain-name form-it.loc
+enable secret 123456
+username admin secret 123456
+!
+line console 0
+ login local
+ exit
+!
+ip ssh version 2
+crypto key generate rsa
+! (taille de cle : 2048)
+line vty 0 4
+ login local
+ transport input ssh
+ exit
+!
+interface gigabitethernet 0/1
+ no shutdown
+ exit
+!
+! --- Routage inter-VLAN (router-on-a-stick) ---
+interface gigabitethernet 0/1.10
+ encapsulation dot1Q 10
+ ip address 192.168.10.254 255.255.255.0
+ ip helper-address 192.168.40.10
+interface gigabitethernet 0/1.20
+ encapsulation dot1Q 20
+ ip address 192.168.20.126 255.255.255.128
+ ip helper-address 192.168.40.10
+interface gigabitethernet 0/1.30
+ encapsulation dot1Q 30
+ ip address 192.168.30.62 255.255.255.192
+ ip helper-address 192.168.40.10
+interface gigabitethernet 0/1.40
+ encapsulation dot1Q 40
+ ip address 192.168.40.30 255.255.255.224
+interface gigabitethernet 0/1.50
+ encapsulation dot1Q 50
+ ip address 192.168.50.14 255.255.255.240
+ ip helper-address 192.168.40.10
+!
+! --- Lien WAN vers RT2 ---
+interface gigabitethernet 0/0
+ ip address 92.100.0.1 255.255.255.252
+ no shutdown
+ exit
+!
+! --- Route statique vers le reseau Google ---
+ip route 8.0.0.0 255.0.0.0 92.100.0.2
+end
+copy running-config startup-config
