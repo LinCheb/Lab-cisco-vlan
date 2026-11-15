@@ -143,14 +143,3 @@ Ajouter des **listes de contrôle d'accès (ACL)** sur RT1 pour appliquer le pri
 
 ---
 
-## 📂 Structure du dépôt
-
-```
-lab-cisco-vlan-intervlan/
-├── README.md
-├── v1-vlan-routage/
-│   ├── lab-vlan.pkt
-│   ├── configs/        SW0.txt, RT1.txt, RT2.txt
-│   └── captures/
-└── v2-acl/             (à venir)
-```
