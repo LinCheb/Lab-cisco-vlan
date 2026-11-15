@@ -1,7 +1,7 @@
 # Lab Cisco – VLAN, routage inter-VLAN, SSH et routage statique
 
 Lab réalisé sur **Cisco Packet Tracer** dans le cadre de ma formation **Administratrice Systèmes et Réseaux (DesCodeuses)**.
-J'ai monté la topologie et configuré tous les équipements moi-même, puis j'ai comparé mon travail avec la correction du formateur.
+
 
 ![Topologie](v1-vlan-routage/captures/topologie.png)
 
