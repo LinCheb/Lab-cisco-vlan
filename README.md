@@ -75,7 +75,7 @@ Construire un réseau d'entreprise segmenté :
 4. Ping de PC1 vers sa passerelle → OK ✅
 5. `show vlan brief` sur SW0, comparé au câblage → **❌ cause trouvée**
 
-**Cause :** j'avais branché les PC sur les ports **à la suite** (Fa0/1, Fa0/2, Fa0/3…) sans tenir compte des plages de ports de chaque VLAN. PC3 (VLAN 20) était sur **Fa0/3**, un port du **VLAN 10**.
+**Cause :** j'avais branché les PC sur les ports **à la suite** (Fa0/1, Fa0/2, Fa0/3…) sans tenir compte des plages de ports de chaque VLAN. PC3 (VLAN 20) était sur **Fa0/3**, un port du **VLAN 10**. 🤦🏻‍♀️
 
 **Correction :** rebrancher chaque PC dans la plage de ports de son VLAN (PC3 → Fa0/5, etc.).
 
