@@ -125,8 +125,8 @@ Les PDU **Successful** en mode Simulation sont visibles sur la [capture de la to
 - **Administration à distance en SSH v2** uniquement : les échanges sont chiffrés (Telnet enverrait les identifiants en clair).
 - **Mots de passe stockés chiffrés** dans la configuration (`secret` plutôt que `password`).
 
-**Limites assumées de ce lab :**
-- ⚠️ **Mots de passe faibles ** : usage de TP uniquement. En production, il faut une politique de mots de passe robustes.
+**Limites de ce lab :**
+- ⚠️ Mots de passe faibles: usage de TP uniquement. En production, il faut une politique de mots de passe robustes.
 - ⚠️ **Aucun filtrage entre VLAN** : le routage inter-VLAN laisse tout passer. Un poste du VLAN **CLIENT** peut joindre le VLAN **GESTION_IT** et les serveurs. La segmentation existe, mais elle n'est pas encore une barrière.
 - Le relais DHCP est configuré, mais les pools DHCP ne le sont pas : les postes sont en adressage statique.
 
